@@ -1,0 +1,12 @@
+import com.drools.drools.dtos.OrderRequest
+import com.drools.drools.dtos.OrderDiscount;
+global com.drools.drools.dtos.OrderDiscount orderDiscount;
+
+dialect "mvel"
+rule "Age Based Discount"
+    when
+        OrderRequest(customerAge > 18)
+    then
+        System.out.println("======================Adding 10% discount for adults===========================");
+        orderDiscount.setDiscount(orderDiscount.getDiscount()+1000);
+end
